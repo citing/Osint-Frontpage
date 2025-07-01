@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OSINT Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #0b0b0c 0%, #101014 100%);
+      font-family: 'Segoe UI', sans-serif;
+      color: #e4e4e4;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.06);
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .subtext {
+      font-size: 1.2rem;
+      color: #aaa;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta {
+      background: #4f46e5;
+      border: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px #4f46e5;
+    }
+
+    .cta:hover {
+      box-shadow: 0 0 20px #4f46e5, inset 0 0 10px #4f46e5;
+    }
+
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      flex: 1;
+      min-width: 260px;
+      text-align: left;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 12px 24px rgba(0, 0, 0, 0.2),
+        0 0 0 0.5px rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.015);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 20px 40px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 70%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #ffffffee;
+    }
+
+    .info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .info.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .info-text {
+      flex: 1;
+    }
+
+    .info-text h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #ffffffee;
+    }
+
+    .info-text p {
+      color: #bbb;
+      max-width: 600px;
+    }
+
+    .info-img {
+      flex: 1;
+      height: 200px;
+      border-radius: 1.25rem;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        inset 0 0 0.5px rgba(255, 255, 255, 0.06);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+      }
+
+      .info {
+        flex-direction: column;
+      }
+
+      .info.reverse {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Next-Gen Intelligence Platform</div>
+    <h1>OSINT Redefined</h1>
+    <p class="subtext">A modern intelligence dashboard with blazing-fast modules and powerful workflows. Designed for professionals.</p>
+    <button class="cta">Get Started Free</button>
+  </header>
+
+  <section class="section">
+    <div class="cards">
+      <div class="card">
+        <h2>800+</h2>
+        <p>Custom Intel Modules running at enterprise-grade scale.</p>
+      </div>
+      <div class="card">
+        <h2>10x Speed</h2>
+        <p>Compared to conventional OSINT workflows and tools.</p>
+      </div>
+      <div class="card">
+        <h2>100% Match</h2>
+        <p>Verified results with unmatched precision and reliability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section info-block">
+    <div class="info">
+      <div class="info-text">
+        <h3>Beautifully Structured</h3>
+        <p>Every module is organized to maximize focus. No clutter. Just signal. Apple’s design principles helped us put clarity and intention first.</p>
+      </div>
+      <div class="info-img"></div>
+    </div>
+    <div class="info reverse">
+      <div class="info-text">
+        <h3>Minimal But Powerful</h3>
+        <p>We use just the right amount of elements and space. Every pixel is considered. Each function is exposed clearly and elegantly.</p>
+      </div>
+      <div class="info-img"></div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 OSINT Dashboard Demo. Inspired by Apple & NoSINT aesthetics. No real data used.
+  </footer>
+
+</body>
+</html>
